@@ -1,0 +1,15 @@
+---
+- hosts: s1
+  become: true
+  vars:
+    java_packages:
+      - java
+    # Add other Java-related variables if needed
+
+  tasks:
+    - name: Install Java (OpenJDK)
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ java_packages }}"
+
